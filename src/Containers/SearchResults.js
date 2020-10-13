@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import Card from '../Components/Card'
-import { Grid, GridRow } from 'semantic-ui-react'
+// import { Grid, GridRow } from 'semantic-ui-react'
 
 class SearchResults extends Component {
   render() {

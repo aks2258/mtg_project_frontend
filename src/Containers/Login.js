@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Redirect} from "react-router-dom";
+// import {Redirect} from "react-router-dom";
 
 class login extends Component {
 
@@ -9,7 +9,7 @@ class login extends Component {
             <form onSubmit={this.props.login}>
                 <input type="text" name="username" placeholder="Username" onChange={this.props.handleChange} />
                 <input type="text" name="password" placeholder="Password" onChange={this.props.handleChange} />
-                <button type="submit">Submit</button>
+                <button type="submit">Log In</button>
             </form>
         </div>
         }

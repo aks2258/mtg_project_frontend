@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Image, Item, Grid } from 'semantic-ui-react'
+import { Item } from 'semantic-ui-react'
 
 
 class Card extends Component {

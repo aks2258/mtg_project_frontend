@@ -10,6 +10,8 @@ import {
 import SearchForm from '../Components/SearchForm'
 import Login from "./Login"
 import SearchResults from "../Containers/SearchResults"
+import Signup from "./Signup"
+import CreateDeck from "../Components/CreateDeck"
 
 const mtg = require('mtgsdk')
 class Home extends Component {
@@ -20,7 +22,8 @@ class Home extends Component {
             password: "",
             loggedIn: false,
             currentUser: "",
-            searchResults: []
+            searchResults: [],
+            addedDeck: {}
         }
     }
 
@@ -71,11 +74,12 @@ class Home extends Component {
         }else{
             return <div>
                     <h3>Welcome!</h3>
-                    <h3>Please Log In</h3>
+                    <h3>Please Log In or Sign Up</h3>
                     <Login 
                     login = {this.login} 
                     handleChange = {this.handleChange} 
                     loggedIn = {this.loggedIn}/>
+                    <Signup />
                     </div>
         }
     }
@@ -89,7 +93,28 @@ class Home extends Component {
         //   console.log(this.state.searchResults)
         })
       }
-    
+
+    handleNewDeckSubmit = (deckName, deckType) => {
+        const deck = {
+            name: deckName,
+            deck_type: deckType
+        }
+        console.log(deck)
+        return fetch('http://localhost:3000/decks', {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/json',
+              "Accept": 'application/json',
+              "Authorization": `Bearer ${localStorage.getItem("token")}`
+            },
+            body: JSON.stringify(deck)
+          })
+          .then(res => res.json())
+            .then(data => {
+              console.log("working", data)
+              this.setState({ addedDeck: data })
+            })
+    }
 
     render() {
         return (
@@ -97,6 +122,7 @@ class Home extends Component {
                 {this.greeting()}
                 <SearchForm fetchCard = {this.fetchCard}/>
                 <SearchResults cardSearchResults = {this.state.searchResults}/>
+                <CreateDeck handleNewDeckSubmit = {this.handleNewDeckSubmit}/>
             </div>
         );
     }

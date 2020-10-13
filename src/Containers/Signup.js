@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Redirect} from "react-router-dom";
 
-class signup extends Component {
+class SignUp extends Component {
     constructor() {
         super()
         this.state = {
@@ -55,12 +55,12 @@ class signup extends Component {
     }
 
     renderSignUp = () => {
-        return this.state.created ? <Redirect to="/login" /> : <div>
+        return this.state.created ? <Redirect to="/" /> : <div>
             <form onSubmit={this.createUser}>
                 <input type="text" name="email" placeholder="Email" onChange={this.handleChange} />
                 <input type="text" name="username" placeholder="Username" onChange={this.handleChange} />
                 <input type="text" name="password" placeholder="Password" onChange={this.handleChange} />
-                <button type="submit">Submit</button>
+                <button type="submit">Sign Up</button>
             </form>
         </div>
 
@@ -75,4 +75,4 @@ class signup extends Component {
     }
 }
 
-export default signup;
+export default SignUp;
