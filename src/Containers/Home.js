@@ -140,8 +140,9 @@ class Home extends Component {
                 {this.greeting()}
                 <SearchForm fetchCard = {this.fetchCard}/>
                 <CreateDeck handleNewDeckSubmit = {this.handleNewDeckSubmit}/>
-                <button onClick = {this.handleFetchUsersDecks}>Your Decks</button>
                 <SearchResults cardSearchResults = {this.state.searchResults} usersDecks={this.state.userDecks}/>
+                <br/>
+                <button onClick = {this.handleFetchUsersDecks}>Your Decks</button>
                 <UserDecks />
             </div>
         );
