@@ -9,8 +9,7 @@ class SearchResults extends Component {
       <div className="search-results" id='search-results'>
         {/* {console.log(this.props.cardSearchResults)} */}
             {this.props.cardSearchResults.map(card => 
-            <Card key = {card.id} card = {card}/>)}
-
+            <Card key = {card.id} card = {card} usersDecks={this.props.usersDecks}/>)}
       </div>
     )
   }

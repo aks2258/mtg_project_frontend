@@ -12,6 +12,7 @@ import Login from "./Login"
 import SearchResults from "../Containers/SearchResults"
 import Signup from "./Signup"
 import CreateDeck from "../Components/CreateDeck"
+import UserDecks from "../Components/UserDecks"
 
 const mtg = require('mtgsdk')
 class Home extends Component {
@@ -23,7 +24,9 @@ class Home extends Component {
             loggedIn: false,
             currentUser: "",
             searchResults: [],
-            addedDeck: {}
+            addedDeck: {},
+            userDecks: [],
+            id: ""
         }
     }
 
@@ -59,8 +62,8 @@ class Home extends Component {
             // Once it is recieved the token is decrypted and access to data is granted
             localStorage.setItem("token", response.jwt)
             // console.log(response)
-            this.setState({currentUser: response.user.username, loggedIn: true})
-            console.log(this.state.currentUser, this.state.loggedIn)
+            this.setState({currentUser: response.user.username, loggedIn: true, id: response.user.id})
+            console.log(this.state.currentUser, this.state.loggedIn, this.state.id)
         })
         .catch(err => console.log(err))
     }
@@ -116,13 +119,30 @@ class Home extends Component {
             })
     }
 
+    handleFetchUsersDecks = () => {
+        return fetch(`http://localhost:3000/users/${this.state.id}/decks/`, {
+            headers: {
+              'Content-Type': 'application/json',
+              "Accept": 'application/json',
+              "Authorization": `Bearer ${localStorage.getItem("token")}`
+            },
+          })
+          .then(res => res.json())
+            .then(data => {
+              console.log("working", data)
+              this.setState({ userDecks: data })
+            })
+    }
+
     render() {
         return (
             <div><br/>
                 {this.greeting()}
                 <SearchForm fetchCard = {this.fetchCard}/>
-                <SearchResults cardSearchResults = {this.state.searchResults}/>
                 <CreateDeck handleNewDeckSubmit = {this.handleNewDeckSubmit}/>
+                <button onClick = {this.handleFetchUsersDecks}>Your Decks</button>
+                <SearchResults cardSearchResults = {this.state.searchResults} usersDecks={this.state.userDecks}/>
+                <UserDecks />
             </div>
         );
     }

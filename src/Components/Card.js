@@ -1,10 +1,32 @@
 import React, { Component } from 'react'
 
 import { Item } from 'semantic-ui-react'
+import { Dropdown } from 'semantic-ui-react'
 
 
 class Card extends Component {
-    render() {
+  state = {
+    decks: []
+  }
+  renderUserDeck = () => {this.setState({decks: this.props.usersDecks.map(deck => {
+      const key = deck.id
+      const text = deck.name
+      const value = deck.type
+      const userDeck = {
+        key: key,
+        text: text,
+        value: value
+      }
+      return userDeck
+    }
+  )})
+  }
+
+  handleClick = () => {
+    console.log(this.state.decks)
+  }
+
+  render() {
     return (
       <div className="card-div" id='card-div'>
           {/* {console.log(this.props.card.name)} */}
@@ -16,6 +38,14 @@ class Card extends Component {
                             <Item.Meta>
                                 <span>{this.props.card.type}</span>
                             </Item.Meta>
+                            <br/>
+                            <Dropdown
+                              placeholder='Select Deck'
+                              fluid
+                              selection
+                              options={this.state.decks}
+                            />
+                            <br/>
                         <button onClick={this.handleClick}>Add to Deck</button>
                         {/* </Item.Content> */}
                 </Item>
