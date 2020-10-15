@@ -6,7 +6,7 @@ class UserDecks extends Component {
     render() {
         return (
             <div className = "users-decks">
-
+                
             </div>
         )
     }

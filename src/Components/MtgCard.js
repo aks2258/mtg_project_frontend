@@ -6,25 +6,27 @@ import { Card, Image } from 'semantic-ui-react'
 
 class MtgCard extends Component {
   state = {
-    decks: [],
+    // decks: [],
     chosenDeck: null,
     addedCard: {}
   }
-  componentDidMount = () =>{
-    this.renderUserDeck()
-  }
-  renderUserDeck = () => {this.setState({decks: this.props.usersDecks.map(deck => {
-      const key = deck.id
-      const text = deck.name
-      const value = deck.deck_type
-      const userDeck = {
-        text: text,
-        value: key
-      }
-      return userDeck
-    }
-  )})
-  }
+  // componentDidMount = () =>{
+  //   this.renderUserDeck()
+  //   console.log("Testing")
+  // }
+
+  // renderUserDeck = () => {this.setState({decks: this.props.usersDecks.map(deck => {
+  //     const key = deck.id
+  //     const text = deck.name
+  //     const value = deck.deck_type
+  //     const userDeck = {
+  //       text: text,
+  //       value: key
+  //     }
+  //     console.log(userDeck)
+  //   }
+  // )})
+  // }
 
   handleAddToDeck = () => {
     console.log(this.state.decks)
@@ -39,7 +41,8 @@ class MtgCard extends Component {
       card_id: this.props.card.id,
       power: this.props.card.power,
       toughness: this.props.card.toughness,
-      imgUrl: this.props.card.imageUrl
+      imgUrl: this.props.card.imageUrl,
+      deck_id: this.state.chosenDeck
     }
 
     return fetch('http://localhost:3000/cards', {
@@ -52,10 +55,10 @@ class MtgCard extends Component {
       body: JSON.stringify(card)
     })
     .then(res => res.json())
-      .then(data => {
-        console.log("working", data)
-        this.setState({ addedCard: data })
-      })
+    .then(data => {
+      console.log("working", data)
+      this.setState({ addedCard: data })
+    })
   }
   
   getChosenDeck = (e, {value}) => {
@@ -64,6 +67,7 @@ class MtgCard extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div className="card-div" id='card-div'>
           <Card>
@@ -90,10 +94,21 @@ class MtgCard extends Component {
             <Card.Content extra>
               <a>
                 <Dropdown
+                  key = {this.props.card.name+"dropdown"}
                   placeholder='Select Deck'
                   fluid
                   selection
-                  options={this.state.decks}
+                  options={this.props.decks.map(deck => {
+                    const key = deck.id
+                    const text = deck.name
+                    const value = deck.deck_type
+                    const userDeck = {
+                      text: text,
+                      value: key
+                    }
+                    return userDeck
+                  }
+                )}
                   onChange={this.getChosenDeck}
                 />
                 <button onClick={this.handleAddToDeck}>Add to Deck</button>

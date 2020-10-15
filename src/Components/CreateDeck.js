@@ -27,7 +27,7 @@ class CreateDeck extends Component {
             <br></br>
             <input placeholder='Type' onChange={(e) => this.handleTypeChange(e)}/>
             </Form.Field>
-            <Button basic type='submit'>Submit</Button>
+            <Button basic type='submit'>Create Deck</Button>
         </Form>
         <br></br>
         </div>

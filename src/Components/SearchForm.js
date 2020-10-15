@@ -46,7 +46,7 @@ class SearchForm extends Component {
                     <input placeholder='Name' onChange={(e) => this.handleSearchNameChange(e)}/>
                     <br></br>
                     </Form.Field>
-                    <Button basic type='submit'>Submit</Button>
+                    <Button basic type='submit'>Search</Button>
                 </Form>
                 <br></br>
             </div>

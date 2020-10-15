@@ -61,9 +61,10 @@ class Home extends Component {
             // If you look in application controller we are requesting the header Authorization
             // Once it is recieved the token is decrypted and access to data is granted
             localStorage.setItem("token", response.jwt)
-            // console.log(response)
+            console.log(response.user.id)
             this.setState({currentUser: response.user.username, loggedIn: true, id: response.user.id})
             console.log(this.state.currentUser, this.state.loggedIn, this.state.id)
+            this.handleFetchUsersDecks()
         })
         .catch(err => console.log(err))
     }
@@ -73,6 +74,7 @@ class Home extends Component {
         if(this.state.loggedIn){
             return <div>
                         <h3>Welcome {this.state.username}</h3>
+                        <UserDecks userDecks = {this.state.userDecks}/>
                    </div>
         }else{
             return <div>
@@ -115,12 +117,12 @@ class Home extends Component {
           .then(res => res.json())
             .then(data => {
               console.log("working", data)
-              this.setState({ addedDeck: data })
+              this.setState({ addedDeck: data, userDecks: [...this.state.userDecks, data] })
             })
     }
 
     handleFetchUsersDecks = () => {
-        return fetch(`http://localhost:3000/users/${this.state.id}/decks/`, {
+        return fetch(`http://localhost:3000/user_decks/`, {
             headers: {
               'Content-Type': 'application/json',
               "Accept": 'application/json',
@@ -138,12 +140,11 @@ class Home extends Component {
         return (
             <div><br/>
                 {this.greeting()}
+                <br/>
                 <SearchForm fetchCard = {this.fetchCard}/>
                 <CreateDeck handleNewDeckSubmit = {this.handleNewDeckSubmit}/>
-                <SearchResults cardSearchResults = {this.state.searchResults} usersDecks={this.state.userDecks}/>
+                <SearchResults cardSearchResults = {this.state.searchResults} decks={this.state.userDecks}/>
                 <br/>
-                <button onClick = {this.handleFetchUsersDecks}>Your Decks</button>
-                <UserDecks />
             </div>
         );
     }
