@@ -13,6 +13,7 @@ import SearchResults from "../Containers/SearchResults"
 import Signup from "./Signup"
 import CreateDeck from "../Components/CreateDeck"
 import UserDecks from "./UserDecks"
+import logo from "../images/logo.png"
 
 const mtg = require('mtgsdk')
 class Home extends Component {
@@ -45,7 +46,7 @@ class Home extends Component {
         const {username, password} = this.state
 
         const user = {username, password}
-        // console.log(user)
+        console.log(user)
         fetch("http://localhost:3000/login", {
             method: "POST",
             headers: {
@@ -79,12 +80,11 @@ class Home extends Component {
         }else{
             return <div>
                     <h3>Welcome!</h3>
-                    <h3>Log In</h3>
                     <Login 
                     login = {this.login} 
                     handleChange = {this.handleChange} 
                     loggedIn = {this.loggedIn}/>
-                    <h3>Sign Up</h3>
+                    <br/>
                     <Signup />
                     </div>
         }
@@ -156,7 +156,7 @@ class Home extends Component {
         return (
             <div>
                 <div className = "website-name">
-                    <h1>Website Name</h1>
+                <img classname = "logo" src={logo} alt='imperfect gathering logo' />
                 </div>
                 <div className = "nav-items">
                     <div className = "welcome-div">

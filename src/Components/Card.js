@@ -44,22 +44,16 @@ class Card extends Component {
           onOpen={() => this.setState({open: true})}
           open={this.state.open}
           trigger={<Button onClick = {() => this.getCardsInDeck(this.props.deckId)}>Show Cards</Button>}
-          >
+          // <div className = "deck-card-list">
+            >
             <Modal.Header>{this.props.deckName}</Modal.Header>
             <Modal.Content image>
               <Image size='medium' src={this.state.cardUrl} wrapped />
               <Modal.Description>
                 <Header>Card List</Header>
                     {/* {console.log(this.state.cards)} */}
-             {/* <div className = "deck-card-list"> */}
                     <Table basic='very' celled collapsing>
-                    <Table.Header>
-                      <Table.Row>
-                        <Table.HeaderCell>Card Name</Table.HeaderCell>
-                        <Table.HeaderCell></Table.HeaderCell>
-                      </Table.Row>
-                    </Table.Header>
-                    <Table.Body id="deck-card-list">
+                    <Table.Body>
                     {this.state.cards.map(card => {
                       return <Table.Row key={card.id+"key"}>
                         <Table.Cell>
@@ -75,7 +69,6 @@ class Card extends Component {
                     })}
                     </Table.Body>
                     </Table>
-             {/* </div> */}
               </Modal.Description>
             </Modal.Content>
             <Modal.Actions>
@@ -84,6 +77,7 @@ class Card extends Component {
               </Button>
             </Modal.Actions>
           </Modal>
+          // </div>
         )
     }
 }

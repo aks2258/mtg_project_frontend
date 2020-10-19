@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Redirect} from "react-router-dom";
 
+import { Button, Form, Modal } from 'semantic-ui-react'
+
 class SignUp extends Component {
     constructor() {
         super()
@@ -55,15 +57,32 @@ class SignUp extends Component {
     }
 
     renderSignUp = () => {
-        return this.state.created ? <Redirect to="/" /> : <div>
-            <form onSubmit={this.createUser}>
-                <input type="text" name="email" placeholder="Email" onChange={this.handleChange} />
-                <input type="text" name="username" placeholder="Username" onChange={this.handleChange} />
-                <input type="text" name="password" placeholder="Password" onChange={this.handleChange} />
-                <button type="submit">Sign Up</button>
-            </form>
+        return this.state.created ? <Redirect to="/" /> : <div className = "signup-modal">
+            <Modal
+                  trigger={<Button>Sign UP</Button>}
+                  header='Please enter Username and Password!'
+                  content= {this.renderSignupForm()}
+                />
         </div>
 
+    }
+
+    renderSignupForm = () => {
+        return <Form onSubmit={this.createUser}>
+                  <Form.Field>
+                    <label>Username</label>
+                    <input placeholder='Username' type="text" name="username" onChange={this.handleChange}/>
+                  </Form.Field>
+                  <Form.Field>
+                    <label>Password</label>
+                    <input placeholder='Password' type="password" name="password" onChange={this.handleChange}/>
+                  </Form.Field>
+                  <Form.Field>
+                    <label>Email</label>
+                    <input placeholder='Email' type="email" name="email" onChange={this.handleChange}/>
+                  </Form.Field>
+                  <Button type='submit'>Submit</Button>
+                </Form>
     }
 
     render() {

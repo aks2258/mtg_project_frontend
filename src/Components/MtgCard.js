@@ -32,7 +32,7 @@ class MtgCard extends Component {
   handleAddToDeck = () => {
     console.log(this.state.decks)
     console.log(this.state.chosenDeck)
-    const colors = this.props.card.color.map(color=>{return color})
+    const colors = this.props.card.colors.map(color=>{return color})
     const subTypes = this.props.card.subtypes.map(subtype=>{return subtype})
 
     const card = {
