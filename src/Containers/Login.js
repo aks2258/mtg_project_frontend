@@ -8,7 +8,7 @@ class login extends Component {
             return  <div className = "form-div">
             <form onSubmit={this.props.login}>
                 <input type="text" name="username" placeholder="Username" onChange={this.props.handleChange} />
-                <input type="text" name="password" placeholder="Password" onChange={this.props.handleChange} />
+                <input type="password" name="password" placeholder="Password" onChange={this.props.handleChange} />
                 <button type="submit">Log In</button>
             </form>
         </div>

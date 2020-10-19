@@ -38,13 +38,9 @@ class SearchForm extends Component {
                 <Form onSubmit={(e) => this.handleSubmit(e)}>
                     <Form.Field>
                     <input placeholder='Type' onChange={(e) => this.handleTypeChange(e)}/>
-                    <br></br>
                     <input placeholder='Colors' onChange={(e) => this.handlesearchColorsChange(e)}/>
-                    <br></br>
                     <input placeholder='Mana Cost' onChange={(e) => this.handlesearchManaCostChange(e)}/>
-                    <br></br>
                     <input placeholder='Name' onChange={(e) => this.handleSearchNameChange(e)}/>
-                    <br></br>
                     </Form.Field>
                     <Button basic type='submit'>Search</Button>
                 </Form>

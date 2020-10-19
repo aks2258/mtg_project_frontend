@@ -12,7 +12,7 @@ import Login from "./Login"
 import SearchResults from "../Containers/SearchResults"
 import Signup from "./Signup"
 import CreateDeck from "../Components/CreateDeck"
-import UserDecks from "../Components/UserDecks"
+import UserDecks from "./UserDecks"
 
 const mtg = require('mtgsdk')
 class Home extends Component {
@@ -74,16 +74,17 @@ class Home extends Component {
         if(this.state.loggedIn){
             return <div>
                         <h3>Welcome {this.state.username}</h3>
-                        <UserDecks userDecks = {this.state.userDecks}/>
+                        <CreateDeck handleNewDeckSubmit = {this.handleNewDeckSubmit}/>
                    </div>
         }else{
             return <div>
                     <h3>Welcome!</h3>
-                    <h3>Please Log In or Sign Up</h3>
+                    <h3>Log In</h3>
                     <Login 
                     login = {this.login} 
                     handleChange = {this.handleChange} 
                     loggedIn = {this.loggedIn}/>
+                    <h3>Sign Up</h3>
                     <Signup />
                     </div>
         }
@@ -136,15 +137,37 @@ class Home extends Component {
             })
     }
 
+    deleteDeck = (deckId) => {
+        fetch(`http://localhost:3000/decks/${deckId}`, {
+            method: 'DELETE',
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("token")}`
+              },
+        }).then(this.setState((prev) => ({ userDecks: prev.userDecks.filter(deck => deck.id !== deckId) })))
+    }
+
+    renderUserDecks = () => {
+        if(this.state.loggedIn){
+            return <UserDecks userDecks = {this.state.userDecks} deleteDeck = {this.deleteDeck}/>
+        }
+    }
+
     render() {
         return (
-            <div><br/>
-                {this.greeting()}
-                <br/>
-                <SearchForm fetchCard = {this.fetchCard}/>
-                <CreateDeck handleNewDeckSubmit = {this.handleNewDeckSubmit}/>
+            <div>
+                <div className = "website-name">
+                    <h1>Website Name</h1>
+                </div>
+                <div className = "nav-items">
+                    <div className = "welcome-div">
+                        {this.greeting()}
+                    </div>
+                    <SearchForm fetchCard = {this.fetchCard}/>
+                </div>
                 <SearchResults cardSearchResults = {this.state.searchResults} decks={this.state.userDecks}/>
                 <br/>
+                <br/>
+                {this.renderUserDecks()}
             </div>
         );
     }

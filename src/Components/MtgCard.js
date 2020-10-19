@@ -1,3 +1,4 @@
+import { subtype } from 'mtgsdk'
 import React, { Component } from 'react'
 
 // import { Item } from 'semantic-ui-react'
@@ -31,14 +32,17 @@ class MtgCard extends Component {
   handleAddToDeck = () => {
     console.log(this.state.decks)
     console.log(this.state.chosenDeck)
+    const colors = this.props.card.color.map(color=>{return color})
+    const subTypes = this.props.card.subtypes.map(subtype=>{return subtype})
+
     const card = {
       name: this.props.card.name,
       manaCost: this.props.card.manaCost,
-      colors: this.props.card.colors,
+      colors: colors,
       type: this.props.card.type,
       types: this.props.card.types,
-      subtypes: this.props.card.subtypes,
-      card_id: this.props.card.id,
+      subtypes: subTypes,
+      card_effect: this.props.card.originalText,
       power: this.props.card.power,
       toughness: this.props.card.toughness,
       imgUrl: this.props.card.imageUrl,
@@ -67,7 +71,6 @@ class MtgCard extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div className="card-div" id='card-div'>
           <Card>
@@ -80,13 +83,16 @@ class MtgCard extends Component {
               <Card.Description>
                 Mana Cost: {this.props.card.manaCost}
                 <br/>
-                Colors: {this.props.card.colors}
                 <br/>
-                Types: {this.props.card.types}
+                Colors: {this.props.card.colors.map(color => {return <p>{color}</p>})}
                 <br/>
-                Subtypes: {this.props.card.subtypes}
+                Type: {this.props.card.types}
                 <br/>
-                Id: {this.props.card.id}
+                <br/>
+                Subtypes: {this.props.card.subtypes.map(subtype => {return <p>{subtype}</p>})}
+                <br/>
+                Card Effect: {this.props.card.originalText}
+                <br/>
                 <br/>
                 Power/Toughness: {this.props.card.power}/{this.props.card.toughness}
               </Card.Description>
