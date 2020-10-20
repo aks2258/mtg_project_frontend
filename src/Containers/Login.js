@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
 // import {Redirect} from "react-router-dom";
-import { Button, Modal } from 'semantic-ui-react'
+import { Button, Modal, Form } from 'semantic-ui-react'
 
 class login extends Component {
 
     renderForm = () => {
         if(!this.props.loggedIn){
-            return  <div className = "login-form-div">
-            <form onSubmit={this.props.login}>
-                <input type="text" name="username" placeholder="Username" onChange={this.props.handleChange} />
-                <input type="password" name="password" placeholder="Password" onChange={this.props.handleChange} />
-                <button type="submit">Log In</button>
-            </form>
-        </div>
+            return  <Form onSubmit={this.props.login}>
+            <Form.Field>
+              <label>Username</label>
+              <input placeholder='Username' type="text" name="username" onChange={this.props.handleChange}/>
+            </Form.Field>
+            <Form.Field>
+              <label>Password</label>
+              <input placeholder='Password' type="password" name="password" onChange={this.props.handleChange}/>
+            </Form.Field>
+            <Button type='submit'>Submit</Button>
+          </Form>
         }
     }
 

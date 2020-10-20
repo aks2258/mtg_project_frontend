@@ -3,15 +3,28 @@ import React, { Component } from 'react'
 import { Grid } from 'semantic-ui-react'
 import Card from '../Components/Card'
 import DeleteDeck from '../Components/DeleteDeck'
+import Cascading from "../images/Cascading.png"
+import { Parallax } from "react-parallax";
 
 class UserDecks extends Component {
     state = {
         open: false
     }
     render() {
+        const image2 = Cascading
+        const insideStyles = {
+            background: "white",
+            padding: 20,
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%,-50%)"
+          };
         return (
-            <div className = "users-decks">
-                <Grid celled>
+            <Parallax bgImage={image2} strength={-100}>
+                <div style={{ height: 500 }}>
+                    <div style={insideStyles}>
+                    <Grid celled>
                 {this.props.userDecks.map(
                     deck => 
                     <Grid.Row key = {deck.id} >
@@ -30,7 +43,9 @@ class UserDecks extends Component {
                     </Grid.Row>
                     )}
                 </Grid>
-            </div>
+                    </div>
+                </div>
+            </Parallax>
         )
     }
 }

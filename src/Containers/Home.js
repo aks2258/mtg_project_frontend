@@ -15,6 +15,9 @@ import CreateDeck from "../Components/CreateDeck"
 import UserDecks from "./UserDecks"
 // import logo from "../public/images/logo.png"
 import UnlcaimedTerritory from "../images/Unclaimed-Territory.jpg"
+import { Parallax } from "react-parallax";
+import { Button } from 'semantic-ui-react'
+import AccountInfo from "../Components/AccountInfo"
 
 const mtg = require('mtgsdk')
 class Home extends Component {
@@ -28,7 +31,9 @@ class Home extends Component {
             searchResults: [],
             addedDeck: {},
             userDecks: [],
-            id: ""
+            id: "",
+            userEmail: "",
+            userPassword: ""
         }
     }
 
@@ -71,12 +76,39 @@ class Home extends Component {
         .catch(err => console.log(err))
     }
 
+    handleEditInfo = (e) => {
+        const {username, password, email} = this.state
+        console.log(username, password, email)
+        const user = {username, password, email}
+        fetch(`http://localhost:3000/users/${this.state.id}`, {
+            method: "PATCH",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")}`
+            },
+            body: JSON.stringify({user})
+        })
+        .then(r => r.json())
+        .then(response => {
+            this.setState({currentUser: response.username, loggedIn: true, password: response.password, email: response.email})
+            console.log(this.state.currentUser, this.state.loggedIn, this.state.id)
+        })
+        .catch(err => console.log(err))
+    }
+
 
     greeting = () => {
         if(this.state.loggedIn){
             return <div className = "logged-in-div">
+                        <br/>
                         <h3>Welcome {this.state.username}</h3>
+                        <AccountInfo handleChange = {this.handleChange} editInfo = {this.handleEditInfo}/>
+                        <form>
+                            <Button>Log Out</Button>
+                        </form>
                         <CreateDeck handleNewDeckSubmit = {this.handleNewDeckSubmit}/>
+                        <br/>
                    </div>
         }else{
             return <div className = "welcome-div">
@@ -170,17 +202,17 @@ class Home extends Component {
 
         const image1 = UnlcaimedTerritory
 
+
         return (
             <div className = "main-div">
                 <div className = "nav-items">
-                    
-                    {this.greeting()}
-                    <br />
-                    <SearchForm fetchCard = {this.fetchCard}/>
+                <Parallax bgImage={image1} strength={500}>
+                  <div style={{ height: 500 }}>
+                    <div style={insideStyles}>{this.greeting()} <SearchForm fetchCard = {this.fetchCard}/></div>
+                  </div>
+                </Parallax>
                 </div>
                 <SearchResults cardSearchResults = {this.state.searchResults} decks={this.state.userDecks}/>
-                <br/>
-                <br/>
                 {this.renderUserDecks()}
             </div>
         );
