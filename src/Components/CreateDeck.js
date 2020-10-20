@@ -35,7 +35,7 @@ class CreateDeck extends Component {
 
     render() {
         return (
-            <div className = "main-div">
+            <div className = "create-div">
                 {this.createDeck()}
             </div>
         );

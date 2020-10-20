@@ -87,7 +87,7 @@ class SignUp extends Component {
 
     render() {
         return (
-            <div>
+            <div className = "sign-up-div">
                 {this.renderSignUp()}
             </div>
         );

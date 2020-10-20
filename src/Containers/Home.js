@@ -13,7 +13,8 @@ import SearchResults from "../Containers/SearchResults"
 import Signup from "./Signup"
 import CreateDeck from "../Components/CreateDeck"
 import UserDecks from "./UserDecks"
-import logo from "../images/logo.png"
+// import logo from "../public/images/logo.png"
+import UnlcaimedTerritory from "../images/Unclaimed-Territory.jpg"
 
 const mtg = require('mtgsdk')
 class Home extends Component {
@@ -73,12 +74,12 @@ class Home extends Component {
 
     greeting = () => {
         if(this.state.loggedIn){
-            return <div>
+            return <div className = "logged-in-div">
                         <h3>Welcome {this.state.username}</h3>
                         <CreateDeck handleNewDeckSubmit = {this.handleNewDeckSubmit}/>
                    </div>
         }else{
-            return <div>
+            return <div className = "welcome-div">
                     <h3>Welcome!</h3>
                     <Login 
                     login = {this.login} 
@@ -153,15 +154,28 @@ class Home extends Component {
     }
 
     render() {
+
+        const styles = {
+            fontFamily: "sans-serif",
+            textAlign: "center"
+          };
+          const insideStyles = {
+            background: "white",
+            padding: 20,
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%,-50%)"
+          };
+
+        const image1 = UnlcaimedTerritory
+
         return (
-            <div>
-                <div className = "website-name">
-                <img classname = "logo" src={logo} alt='imperfect gathering logo' />
-                </div>
+            <div className = "main-div">
                 <div className = "nav-items">
-                    <div className = "welcome-div">
-                        {this.greeting()}
-                    </div>
+                    
+                    {this.greeting()}
+                    <br />
                     <SearchForm fetchCard = {this.fetchCard}/>
                 </div>
                 <SearchResults cardSearchResults = {this.state.searchResults} decks={this.state.userDecks}/>

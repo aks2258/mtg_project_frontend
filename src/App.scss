@@ -1,0 +1,67 @@
+#search-results {
+  position: relative;
+  float: left;
+  width: 100%;
+  // padding: 10px;
+  // padding-left: 5%;
+  height: 500px;
+  overflow: scroll;
+  background-image: url("./images/Unclaimed-Territory.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.search-form {
+    /* position: relative; */
+    float: left;
+    /* width: 50%; */
+}
+
+.deck-form {
+  float: left;
+}
+
+.nav-items {
+  float: right;
+  position: relative;
+  width: 20%;
+}
+
+.website-name{
+  float: left;
+  position: relative;
+  width: 50%;
+  right: 0px;
+}
+
+.users-decks {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+
+.welcome-div {
+    float: left;
+}
+
+// .deck-card-list {
+//   position: relative;
+//   float: left;
+//   width: 100%;
+//   padding: 10px;
+//   padding-left: 5%;
+//   height: 25%;
+//   overflow: scroll;
+//   background-color: black;
+// }
+
+body {
+  background-image: url("./images/Unclaimed-Territory.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.main-div {
+  width: 100%;
+  height: 100%
+}
