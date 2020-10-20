@@ -32,8 +32,9 @@ class Home extends Component {
             addedDeck: {},
             userDecks: [],
             id: "",
-            userEmail: "",
-            userPassword: ""
+            newUsername: "",
+            newUseremail: "",
+            newUserpassword: ""
         }
     }
 
@@ -94,7 +95,7 @@ class Home extends Component {
             this.setState({currentUser: response.username, loggedIn: true, password: response.password, email: response.email})
             console.log(this.state.currentUser, this.state.loggedIn, this.state.id)
         })
-        .catch(err => console.log(err))
+        .catch(err => alert(err))
     }
 
 
@@ -104,6 +105,7 @@ class Home extends Component {
                         <br/>
                         <h3>Welcome {this.state.username}</h3>
                         <AccountInfo handleChange = {this.handleChange} editInfo = {this.handleEditInfo}/>
+                        <br/>
                         <form>
                             <Button>Log Out</Button>
                         </form>
@@ -133,7 +135,8 @@ class Home extends Component {
         })
       }
 
-    handleNewDeckSubmit = (deckName, deckType) => {
+    handleNewDeckSubmit = (e, deckName, deckType) => {
+        e.target.reset()
         const deck = {
             name: deckName,
             deck_type: deckType
@@ -207,8 +210,10 @@ class Home extends Component {
             <div className = "main-div">
                 <div className = "nav-items">
                 <Parallax bgImage={image1} strength={500}>
-                  <div style={{ height: 500 }}>
-                    <div style={insideStyles}>{this.greeting()} <SearchForm fetchCard = {this.fetchCard}/></div>
+                  <div style={{ height: 700 }}>
+                    <div style={insideStyles}>
+                        {this.greeting()}
+                        <SearchForm fetchCard = {this.fetchCard}/></div>
                   </div>
                 </Parallax>
                 </div>

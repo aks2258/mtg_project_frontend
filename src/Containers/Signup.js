@@ -59,7 +59,7 @@ class SignUp extends Component {
     renderSignUp = () => {
         return this.state.created ? <Redirect to="/" /> : <div className = "signup-modal">
             <Modal
-                  trigger={<Button>Sign UP</Button>}
+                  trigger={<Button>Sign Up</Button>}
                   header='Please enter Username and Password!'
                   content= {this.renderSignupForm()}
                 />

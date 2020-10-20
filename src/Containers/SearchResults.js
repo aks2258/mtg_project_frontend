@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import MtgCard from '../Components/MtgCard'
-import { Grid } from 'semantic-ui-react'
+import { Grid, Header } from 'semantic-ui-react'
 
 class SearchResults extends Component {
   state = {
@@ -24,6 +24,7 @@ class SearchResults extends Component {
   render() {
     return (
       <div className="search-results" id='search-results'>
+        <Header inverted color='teal' align = "center" size='huge'>Search Results</Header>
         <Grid container centered stackable relaxed='very' columns={4} >
           {this.props.cardSearchResults.map(card => 
 

@@ -43,7 +43,7 @@ class Card extends Component {
           onClose={() => this.setState({open: false})}
           onOpen={() => this.setState({open: true})}
           open={this.state.open}
-          trigger={<Button onClick = {() => this.getCardsInDeck(this.props.deckId)}>Show Cards</Button>}
+          trigger={<Button size="small" onClick = {() => this.getCardsInDeck(this.props.deckId)}>Show Cards</Button>}
           // <div className = "deck-card-list">
             >
             <Modal.Header>{this.props.deckName}</Modal.Header>
