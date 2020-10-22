@@ -21,12 +21,6 @@
   float: left;
 }
 
-// .nav-items {
-//   float: right;
-//   position: relative;
-//   width: 20%;
-// }
-
 .users-decks {
   width: 50%;
 }
@@ -35,19 +29,34 @@
     float: left;
 }
 
-// .deck-card-list {
-//   position: relative;
-//   float: left;
-//   width: 100%;
-//   padding: 10px;
-//   padding-left: 5%;
-//   height: 25%;
-//   overflow: scroll;
-//   background-color: black;
-// }
+.ui.card {
+  opacity: 90%
+}
 
-body {
-  // background-image: url("./images/Unclaimed-Territory.jpg");
-  // background-size: cover;
-  // background-repeat: no-repeat;
+.description {
+  height: 500px;
+  overflow: scroll;
+  opacity: 90%;
+}
+
+.image.content {
+  background: black;
+}
+
+body > div.ui.page.modals.dimmer.transition.visible.active > div > div.image.content {
+  background-image: url("./images/Ghost_Ship.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.ui.medium.image {
+  opacity: 90%
+}
+
+body > div.ui.page.modals.dimmer.transition.visible.active > div > div.image.content > div.description {
+  width: 35%
+}
+
+#jump-tos{
+  align-items: center;
 }

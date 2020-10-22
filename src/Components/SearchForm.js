@@ -42,7 +42,7 @@ class SearchForm extends Component {
                     <input placeholder='Mana Cost' onChange={(e) => this.handlesearchManaCostChange(e)}/>
                     <input placeholder='Name (eg: Niv-mizzet, forest, island...)' onChange={(e) => this.handleSearchNameChange(e)}/>
                     </Form.Field>
-                    <Button basic type='submit'>Search</Button>
+                    <Button type='submit'>Search</Button>
                 </Form>
                 <br></br>
             </div>

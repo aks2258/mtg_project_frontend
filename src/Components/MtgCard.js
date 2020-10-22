@@ -72,7 +72,7 @@ class MtgCard extends Component {
 
   render() {
     return (
-      <div className="card-div" id='card-div'>
+      <div className="card-div" id='card-div' opacity="90%">
           <Card>
             <Image src={this.props.card.imageUrl} alt={this.props.card.name} wrapped ui={false} />
             <Card.Content>

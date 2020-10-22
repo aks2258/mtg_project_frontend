@@ -16,8 +16,8 @@ import UserDecks from "./UserDecks"
 // import logo from "../public/images/logo.png"
 import UnlcaimedTerritory from "../images/Unclaimed-Territory.jpg"
 import { Parallax } from "react-parallax";
-import { Button } from 'semantic-ui-react'
-import AccountInfo from "../Components/AccountInfo"
+import { Button, Header } from 'semantic-ui-react'
+import { HashLink } from 'react-router-hash-link';
 
 const mtg = require('mtgsdk')
 class Home extends Component {
@@ -34,7 +34,8 @@ class Home extends Component {
             id: "",
             newUsername: "",
             newUseremail: "",
-            newUserpassword: ""
+            newUserpassword: "",
+            accountOpen: false
         }
     }
 
@@ -103,24 +104,26 @@ class Home extends Component {
         if(this.state.loggedIn){
             return <div className = "logged-in-div">
                         <br/>
-                        <h3>Welcome {this.state.username}</h3>
-                        <AccountInfo handleChange = {this.handleChange} editInfo = {this.handleEditInfo}/>
-                        <br/>
+                        <h3>Welcome {this.state.username}!</h3>
+                        {/* <AccountInfo accountOpen = {this.state.accountOpen} handleChange = {this.handleChange} editInfo = {this.handleEditInfo}/>
+                        <br/> */}
                         <form>
                             <Button>Log Out</Button>
                         </form>
+                        {this.renderJumpTos()}
                         <CreateDeck handleNewDeckSubmit = {this.handleNewDeckSubmit}/>
                         <br/>
                    </div>
-        }else{
+        } else {
             return <div className = "welcome-div">
-                    <h3>Welcome!</h3>
                     <Login 
                     login = {this.login} 
                     handleChange = {this.handleChange} 
                     loggedIn = {this.loggedIn}/>
                     <br/>
                     <Signup />
+                    <br/>
+                    {this.renderJumpTos()}
                     </div>
         }
     }
@@ -136,7 +139,6 @@ class Home extends Component {
       }
 
     handleNewDeckSubmit = (e, deckName, deckType) => {
-        e.target.reset()
         const deck = {
             name: deckName,
             deck_type: deckType
@@ -155,6 +157,7 @@ class Home extends Component {
             .then(data => {
               console.log("working", data)
               this.setState({ addedDeck: data, userDecks: [...this.state.userDecks, data] })
+              e.target.reset()
             })
     }
 
@@ -187,6 +190,26 @@ class Home extends Component {
             return <UserDecks userDecks = {this.state.userDecks} deleteDeck = {this.deleteDeck}/>
         }
     }
+    
+    renderJumpTos = () => {
+        if (this.state.loggedIn) {
+            return <div id = "jump-tos">
+                <br/>
+                <Button>
+                    <HashLink to="#search-results">Jump to Search Results</HashLink>
+                </Button>
+                <br/>
+                <br/>
+                <Button>
+                    <HashLink to="#users-decks">Jump to Your Decks</HashLink>
+                </Button>
+                </div>
+        } else {
+            return <Button>
+                    <HashLink to="#search-results">Jump to Search Results</HashLink>
+                </Button>
+        }
+    }
 
     render() {
 
@@ -195,29 +218,31 @@ class Home extends Component {
             textAlign: "center"
           };
           const insideStyles = {
-            background: "white",
+            // background: "white",
             padding: 20,
             position: "absolute",
             top: "50%",
             left: "50%",
-            transform: "translate(-50%,-50%)"
+            transform: "translate(-50%,-50%)",
+            opacity: "90%"
           };
 
         const image1 = UnlcaimedTerritory
 
 
         return (
-            <div className = "main-div">
+            <div className = "main-div" id = "main-div">
                 <div className = "nav-items">
                 <Parallax bgImage={image1} strength={500}>
-                  <div style={{ height: 700 }}>
+                  <div style={{ height: 800 }}>
                     <div style={insideStyles}>
+                        <Header size="huge">𝐈𝐦𝐩𝐞𝐫𝐟𝐞𝐜𝐭 𝐆𝐚𝐭𝐡𝐞𝐫𝐢𝐧𝐠</Header>
                         {this.greeting()}
                         <SearchForm fetchCard = {this.fetchCard}/></div>
                   </div>
                 </Parallax>
                 </div>
-                <SearchResults cardSearchResults = {this.state.searchResults} decks={this.state.userDecks}/>
+                    <SearchResults loggedIn= {this.state.loggedIn} cardSearchResults = {this.state.searchResults} decks={this.state.userDecks}/>
                 {this.renderUserDecks()}
             </div>
         );

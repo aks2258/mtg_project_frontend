@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import MtgCard from '../Components/MtgCard'
-import { Grid, Header } from 'semantic-ui-react'
+import { Grid, Header, Button } from 'semantic-ui-react'
+import { HashLink } from 'react-router-hash-link';
 
 class SearchResults extends Component {
   state = {
@@ -21,9 +22,21 @@ class SearchResults extends Component {
   )})
   }
   
+  renderUsersDecks = () => {
+    if(this.props.loggedIn){
+      return <Button>
+              <HashLink to="#users-decks">Jump to Your Decks</HashLink>
+            </Button>
+    }
+  }
+  
   render() {
     return (
-      <div className="search-results" id='search-results'>
+      <div className="search-results" id='search-results' style={{height: 800}}>
+        <Button>
+            <HashLink to="#main-div">Jump to Top</HashLink>
+        </Button>
+        {this.renderUsersDecks()}
         <Header inverted color='teal' align = "center" size='huge'>Search Results</Header>
         <Grid container centered stackable relaxed='very' columns={4} >
           {this.props.cardSearchResults.map(card => 
