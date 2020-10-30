@@ -15,13 +15,14 @@ class CreateDeck extends Component {
         this.setState({ name: e.target.value })
     }
     handleTypeChange = (e) => {
+        console.log(e.target.value)
         this.setState({ deck_type: e.target.value })
     }
 
     createDeck = () =>{
         return <div className = "deck-form">
         <h3>Create Deck:</h3>
-        <Form onSubmit={(e) => this.props.handleNewDeckSubmit(this.state.name, this.state.deck_type)}>
+        <Form onSubmit={() => this.props.handleNewDeckSubmit(this.state.name, this.state.deck_type)}>
             <Form.Field>
             <input placeholder='Name' onChange={(e) => this.handleNameChange(e)}/>
             <br></br>

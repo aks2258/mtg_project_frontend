@@ -138,7 +138,8 @@ class Home extends Component {
         })
       }
 
-    handleNewDeckSubmit = (e, deckName, deckType) => {
+    handleNewDeckSubmit = (deckName, deckType) => {
+        console.log(deckType, "deck type")
         const deck = {
             name: deckName,
             deck_type: deckType
@@ -157,7 +158,6 @@ class Home extends Component {
             .then(data => {
               console.log("working", data)
               this.setState({ addedDeck: data, userDecks: [...this.state.userDecks, data] })
-              e.target.reset()
             })
     }
 

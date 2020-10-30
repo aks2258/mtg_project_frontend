@@ -15,6 +15,11 @@ class UserDecks extends Component {
     handleRenderDecks = () => {
         
     }
+
+    componentDidMount = () => {
+        console.log(this.props, "here")
+    }
+
     render() {
         const image2 = Cascading
         const insideStyles = {
