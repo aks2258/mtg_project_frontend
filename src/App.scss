@@ -1,0 +1,62 @@
+#search-results {
+  // position: relative;
+  // float: left;
+  // width: 100%;
+  // padding: 10px;
+  // padding-left: 5%;
+  height: 500px;
+  overflow: scroll;
+  background-image: url("./images/MeM.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.search-form {
+    /* position: relative; */
+    float: left;
+    /* width: 50%; */
+}
+
+.deck-form {
+  float: left;
+}
+
+.users-decks {
+  width: 50%;
+}
+
+.welcome-div {
+    float: left;
+}
+
+.ui.card {
+  opacity: 90%
+}
+
+.description {
+  height: 500px;
+  overflow: scroll;
+  opacity: 90%;
+}
+
+.image.content {
+  background: black;
+}
+
+body > div.ui.page.modals.dimmer.transition.visible.active > div > div.image.content {
+  background-image: url("./images/Ghost_Ship.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.ui.medium.image {
+  opacity: 90%
+}
+
+body > div.ui.page.modals.dimmer.transition.visible.active > div > div.image.content > div.description {
+  width: 35%
+}
+
+#jump-tos{
+  align-items: center;
+}

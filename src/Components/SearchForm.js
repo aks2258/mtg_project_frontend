@@ -34,15 +34,15 @@ class SearchForm extends Component {
     render() {
         return (
             <div className = "search-form">
-                <h3>Search:</h3>
+                <h3>Search Cards</h3>
                 <Form onSubmit={(e) => this.handleSubmit(e)}>
                     <Form.Field>
-                    <input placeholder='Type' onChange={(e) => this.handleTypeChange(e)}/>
+                    <input placeholder='Type (eg: land, instant, sorcery, creature...)' onChange={(e) => this.handleTypeChange(e)}/>
                     <input placeholder='Colors' onChange={(e) => this.handlesearchColorsChange(e)}/>
                     <input placeholder='Mana Cost' onChange={(e) => this.handlesearchManaCostChange(e)}/>
-                    <input placeholder='Name' onChange={(e) => this.handleSearchNameChange(e)}/>
+                    <input placeholder='Name (eg: Niv-mizzet, forest, island...)' onChange={(e) => this.handleSearchNameChange(e)}/>
                     </Form.Field>
-                    <Button basic type='submit'>Submit</Button>
+                    <Button type='submit'>Search</Button>
                 </Form>
                 <br></br>
             </div>

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import Home from './Containers/Home'
 
 import {
   BrowserRouter,
-  Switch,
-  Route,
-  Link,
-  useHistory
+  // Switch,
+  // Route,
+  // Link,
+  // useHistory
 } from "react-router-dom";
 
 
