@@ -1,8 +1,8 @@
 # Imperfect Gathering
 A site where you can build decks for the card game Magic the Gathering.
 
+![Alt text](.src/images/Home.png "Title Screen")
 
-![Alt text](Home.png "Title Screen")
 ## Table of Contents ##
 ### Inspiration
 ### Technologies Used
@@ -22,11 +22,10 @@ After I got back into the popular card game Magic the Gathering, I saw that my d
 1. clone this repository.
 2. Using your terminal, navigate to the root folder of your cloned repository and run "npm install."
 4. Run with "npm start"
-
 5. Search for any card(s)
 6. If you wish to add a card to a deck, create an account and then create a deck.
-![Alt text](Home.png "Title Screen")
+![Alt text](.src/images/Home.png "Title Screen")
 7. Select a deck from the drop down from the card in the Search Results.
-![Alt text](Search_Results.png "Title Screen")
+![Alt text](.src/images/Search_Results.png "Search Results Screen")
 8. Scroll down to the bottom, or click Jump to Decks
-![Alt text](User_Decks.png "Title Screen")
+![Alt text](.src/images/User_Decks.png "Users Decks Screen")
