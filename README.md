@@ -27,6 +27,6 @@ After I got back into the popular card game Magic the Gathering, I saw that my d
 6. If you wish to add a card to a deck, create an account and then create a deck.
 ![Alt text](Home.png "Title Screen")
 7. Select a deck from the drop down from the card in the Search Results.
-![Alt text](Search_Reults.png "Title Screen")
+![Alt text](Search_Results.png "Title Screen")
 8. Scroll down to the bottom, or click Jump to Decks
 ![Alt text](User_Decks.png "Title Screen")
