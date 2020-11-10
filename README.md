@@ -24,7 +24,7 @@ After I got back into the popular card game Magic the Gathering, I saw that my d
 4. Run with "npm start"
 5. Search for any card(s)
 6. If you wish to add a card to a deck, create an account and then create a deck.
-![Alt text](https://github.com/aks2258/mtg_project_frontend/blob/main/src/images/Search_Results.png)
+![Alt text](https://github.com/aks2258/mtg_project_frontend/blob/main/src/images/Home.png)
 7. Select a deck from the drop down from the card in the Search Results.
 ![Alt text](https://github.com/aks2258/mtg_project_frontend/blob/main/src/images/Search_Results.png)
 8. Scroll down to the bottom, or click Jump to Decks
