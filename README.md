@@ -1,7 +1,7 @@
 # Imperfect Gathering
 A site where you can build decks for the card game Magic the Gathering.
 
-![Alt text](https://github.com/aks2258/mtg_project_frontend/tree/main/src/images/Home.png "Title Screen")
+![](https://github.com/aks2258/mtg_project_frontend/tree/main/src/images/Home.png)
 
 ## Table of Contents ##
 ### Inspiration
