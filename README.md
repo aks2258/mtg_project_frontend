@@ -29,3 +29,7 @@ After I got back into the popular card game Magic the Gathering, I saw that my d
 ![Alt text](https://github.com/aks2258/mtg_project_frontend/blob/main/src/images/Search_Results.png)
 8. Scroll down to the bottom, or click Jump to Decks
 ![Alt text](https://github.com/aks2258/mtg_project_frontend/blob/main/src/images/User_Decks.png)
+
+
+## Future Implementations
+One implementation planned is craeting a search of all the decks created by users that users can post recommendations for cards or even write reviews of decks.
