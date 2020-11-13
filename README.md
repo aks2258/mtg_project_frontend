@@ -4,7 +4,7 @@ A site where you can build decks for the card game Magic the Gathering.
 ![](https://github.com/aks2258/mtg_project_frontend/blob/main/src/images/Demo.gif)
 
 
-[Demo](https://www.youtube.com/watch?v=mYzVeRW99r4&feature=youtu.be)
+[Demo](https://www.youtube.com/watch?v=VhLmw2lHMnc&feature=youtu.be)
 
 ## Table of Contents ##
 ### Inspiration
